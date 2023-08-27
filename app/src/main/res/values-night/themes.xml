@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <!-- Base application theme. -->
+  <style name="mpa.Theme.Meu_primeiro_aplicativo" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <!-- Primary brand color. -->
+    <item name="colorPrimary">@color/mpa_purple_200</item>
+    <item name="colorPrimaryVariant">@color/mpa_purple_700</item>
+    <item name="colorOnPrimary">@color/mpa_black</item>
+    <!-- Secondary brand color. -->
+    <item name="colorSecondary">@color/mpa_teal_200</item>
+    <item name="colorSecondaryVariant">@color/mpa_teal_200</item>
+    <item name="colorOnSecondary">@color/mpa_black</item>
+    <!-- Status bar color. -->
+    <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    <!-- Customize your theme here. -->
+  </style>
+</resources>

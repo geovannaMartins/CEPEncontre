@@ -1,0 +1,15 @@
+<resources>
+  <string name="mpa_app_name">meu_primeiro_aplicativo</string>
+  <string name="mpa_title_findCEP">CEPEncontre</string>
+  <string name="mpa_name">Meu  primeiro aplicativo</string>
+  <string name="mpa_title">Informe seu CEP</string>
+  <string name="mpa_cep">CEP</string>
+  <string name="mpa_consult">Consultar</string>
+  <string name="mpa_result">Seu resultado é: </string>
+  <string name="mpa_address">CEP: %s \nLogradouro: %s \nComplemento: %s \nBairro: %s \nCidade: %s
+    \nUF: %s \nDDD: %s </string>
+  <string name="mpa_error_cep">CEP inválido, confira o CEP informado e tente novamente mais tarde.</string>
+  <string name="mpa_error_response">Desculpe, ocorreu algo. Tente novamente mais tarde.</string>
+  <string name="mpa_error_comunication_api">Desculpe, uma falha na comunicação com a API. Tente novamente mais tarde.</string>
+  <string name="mpa_cep_info">* Não é possível utilizar letras e caracteres especiais</string>
+</resources>
