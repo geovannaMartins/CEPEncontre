@@ -7,10 +7,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class CepRepository {
+  private var retrofit : Retrofit = Retrofit.Builder().baseUrl(HOST).addConverterFactory(
+    GsonConverterFactory.create()).build()
 
   fun fetchCep(cep: String): Call<CepResponse> {
-    val retrofit =
-      Retrofit.Builder().baseUrl(HOST).addConverterFactory(GsonConverterFactory.create()).build()
     val cepService = retrofit.create(CepService::class.java)
 
     return cepService.getCepResponse(cep)
