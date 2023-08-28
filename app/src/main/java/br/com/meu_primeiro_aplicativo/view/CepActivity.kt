@@ -22,6 +22,7 @@ class CepActivity : AppCompatActivity() {
   private lateinit var tvDescriptionResult: TextView
   private lateinit var btConsult: AppCompatButton
   private lateinit var viewModel: CepViewModel
+  private lateinit var loading: View
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -39,6 +40,7 @@ class CepActivity : AppCompatActivity() {
     tvTitleResult = findViewById(R.id.mpaTitleResult)
     tvDescriptionResult = findViewById(R.id.mpaDescriptionResult)
     btConsult = findViewById(R.id.mpaBtConsulte)
+    loading = findViewById(R.id.mpaLoading)
   }
 
   private fun setListeners() {
@@ -52,38 +54,30 @@ class CepActivity : AppCompatActivity() {
   }
 
   private fun setListenerCep() {
-    var isUpdating = false
+    var previousCep = ""
     etCep.addTextChangedListener(object : TextWatcher {
       override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-        // empty
+        previousCep = p0.toString()
       }
 
       override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-       // empty
+        // empty
       }
 
       override fun afterTextChanged(s: Editable?) {
-        if (isUpdating) {
+        val currentCep = s.toString()
+
+        if (currentCep == previousCep) {
           return
         }
 
-        isUpdating = true
-        val inputCep = s.toString().replace("\\D".toRegex(), "")
-
-        if (inputCep != "") {
-          val formattedCep = StringBuilder()
-          for (number in inputCep.indices) {
-            formattedCep.append(inputCep[number])
-            if (number == 1) {
-              formattedCep.append(".")
-            } else if (number == 4) {
-              formattedCep.append("-")
-            }
-          }
-          etCep.setText(formattedCep.toString())
-          etCep.setSelection(formattedCep.length)
+        val formattedText = currentCep.replace("-", "").replace(".", "")
+        val formattedCep = StringBuilder(formattedText)
+        if (formattedCep.length > 5) {
+          formattedCep.insert(5, "-")
         }
-        isUpdating = false
+        etCep.setText(formattedCep.toString())
+        etCep.setSelection(formattedCep.length)
       }
     })
   }
@@ -91,7 +85,9 @@ class CepActivity : AppCompatActivity() {
   private fun getConfigCepAndCall() {
     val cep = etCep.text.toString().replace(".", "").replace("-", "")
     if (cep.isNotEmpty() && cep.length == 8) {
+      loading.visibility = View.VISIBLE
       callCepService(cep)
+      hideKeyboard()
     }
   }
 
@@ -99,6 +95,7 @@ class CepActivity : AppCompatActivity() {
     viewModel.getCep(
       cep = cep,
       onSuccess = { cepResponse ->
+        loading.visibility = View.GONE
         if (cepResponse.isSuccessful) {
           setVisibilityResult(true)
           val address = cepResponse.body()
@@ -123,7 +120,6 @@ class CepActivity : AppCompatActivity() {
             ).show()
           }
           etCep.text.clear()
-          hideKeyboard()
         } else {
           setVisibilityResult(false)
           Toast.makeText(
@@ -134,6 +130,7 @@ class CepActivity : AppCompatActivity() {
         }
       },
       onError = {
+        loading.visibility = View.GONE
         setVisibilityResult(false)
         Toast.makeText(
           this@CepActivity,

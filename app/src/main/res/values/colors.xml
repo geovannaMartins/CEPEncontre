@@ -10,5 +10,5 @@
   <color name="mpa_green">#FF123426</color>
   <color name="mpa_green_dark">#0D251B</color>
   <color name="mpa_grey_black">#222222</color>
-  <color name="mpa_white_alpha">#ddffffff</color>
+  <color name="mpa_white_alpha">#00FFFFFF</color>
 </resources>
