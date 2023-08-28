@@ -8,7 +8,6 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.AppCompatButton
@@ -86,58 +85,8 @@ class CepActivity : AppCompatActivity() {
     val cep = etCep.text.toString().replace(".", "").replace("-", "")
     if (cep.isNotEmpty() && cep.length == 8) {
       loading.visibility = View.VISIBLE
-      callCepService(cep)
       hideKeyboard()
     }
-  }
-
-  private fun callCepService(cep: String) {
-    viewModel.getCep(
-      cep = cep,
-      onSuccess = { cepResponse ->
-        loading.visibility = View.GONE
-        if (cepResponse.isSuccessful) {
-          setVisibilityResult(true)
-          val address = cepResponse.body()
-          if (address?.erro != true) {
-            tvDescriptionResult.text =
-              String.format(
-                resources.getString(R.string.mpa_address),
-                address?.cep,
-                address?.logradouro,
-                address?.complemento,
-                address?.bairro,
-                address?.localidade,
-                address?.uf,
-                address?.ddd
-              )
-          } else {
-            setVisibilityResult(false)
-            Toast.makeText(
-              this@CepActivity,
-              resources.getString(R.string.mpa_error_cep),
-              Toast.LENGTH_LONG
-            ).show()
-          }
-          etCep.text.clear()
-        } else {
-          setVisibilityResult(false)
-          Toast.makeText(
-            this@CepActivity,
-            resources.getString(R.string.mpa_error_response),
-            Toast.LENGTH_LONG
-          ).show()
-        }
-      },
-      onError = {
-        loading.visibility = View.GONE
-        setVisibilityResult(false)
-        Toast.makeText(
-          this@CepActivity,
-          resources.getString(R.string.mpa_error_comunication_api),
-          Toast.LENGTH_LONG
-        ).show()
-      })
   }
 
   private fun setVisibilityResult(responseSuccess: Boolean) {
