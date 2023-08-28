@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import br.com.meu_primeiro_aplicativo.R
 import br.com.meu_primeiro_aplicativo.viewmodel.CepViewModel
 
-class CepActivity : AppCompatActivity(){
+class CepActivity : AppCompatActivity() {
   private lateinit var etCep: EditText
   private lateinit var tvTitleResult: TextView
   private lateinit var tvDescriptionResult: TextView
@@ -45,27 +45,32 @@ class CepActivity : AppCompatActivity(){
     etCep.setOnClickListener {
       getConfigCepAndCall()
     }
+
     btConsult.setOnClickListener {
       getConfigCepAndCall()
     }
   }
 
   private fun setListenerCep() {
+    var isUpdating = false
     etCep.addTextChangedListener(object : TextWatcher {
       override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
         // empty
       }
 
       override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-        // empty
+        getConfigCepAndCall()
       }
 
       override fun afterTextChanged(s: Editable?) {
-        var currentCep = ""
+        if (isUpdating) {
+          return
+        }
+
+        isUpdating = true
         val inputCep = s.toString().replace("\\D".toRegex(), "")
 
-        if (inputCep != currentCep) {
-          currentCep = inputCep
+        if (inputCep != "") {
           val formattedCep = StringBuilder()
           for (number in inputCep.indices) {
             formattedCep.append(inputCep[number])
@@ -75,11 +80,10 @@ class CepActivity : AppCompatActivity(){
               formattedCep.append("-")
             }
           }
-          etCep.removeTextChangedListener(this)
           etCep.setText(formattedCep.toString())
           etCep.setSelection(formattedCep.length)
-          etCep.addTextChangedListener(this)
         }
+        isUpdating = false
       }
     })
   }
@@ -154,6 +158,4 @@ class CepActivity : AppCompatActivity(){
       baseContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     inputManager.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
   }
-
-
 }
