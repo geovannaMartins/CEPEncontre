@@ -1,8 +1,8 @@
 <resources>
   <string name="mpa_app_name">meu_primeiro_aplicativo</string>
-  <string name="mpa_title_findCEP">CEPEncontre</string>
+  <string name="mpa_title_findCEP">CEP BRASIL</string>
   <string name="mpa_name">Meu  primeiro aplicativo</string>
-  <string name="mpa_title">Informe seu CEP</string>
+  <string name="mpa_title">Busque aqui seu CEP</string>
   <string name="mpa_cep">CEP</string>
   <string name="mpa_consult">Consultar</string>
   <string name="mpa_result">Seu resultado é: </string>

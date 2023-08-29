@@ -12,7 +12,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     layout="@layout/mpa_loading"
-    android:visibility="gone"/>
+    android:visibility="gone
+"/>
 
   <androidx.appcompat.widget.Toolbar
     android:layout_width="match_parent"
@@ -50,7 +51,7 @@
         android:layout_marginHorizontal="@dimen/mpa_margin_16dp"
         android:hint="@string/mpa_cep"
         android:inputType="number"
-        android:maxLength="10"
+        android:maxLength="9"
         android:minHeight="48dp"
         android:textColor="@color/mpa_black" />
 

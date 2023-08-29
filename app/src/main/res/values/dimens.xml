@@ -3,4 +3,5 @@
   <dimen name="mpa_dimen_18sp">18sp</dimen>
   <dimen name="mpa_margin_16dp">16dp</dimen>
   <dimen name="mpa_margin_18dp">18dp</dimen>
+  <dimen name="mpa_margin_50dp">50dp</dimen>
 </resources>
