@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
   android:orientation="vertical"
   tools:context=".view.CepActivity">
 
   <include
     android:id="@+id/mpaLoading"
+    layout="@layout/mpa_loading"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    layout="@layout/mpa_loading"
-    android:visibility="gone"/>
+    android:visibility="gone" />
 
   <androidx.appcompat.widget.Toolbar
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/mpa_green"
+    android:background="@color/mpa_green_dark"
     app:title="@string/mpa_title_findCEP"
     app:titleTextColor="@color/mpa_white" />
 
@@ -34,8 +34,8 @@
       <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/mpa_margin_16dp"
         android:layout_marginHorizontal="@dimen/mpa_margin_16dp"
+        android:layout_marginTop="@dimen/mpa_margin_16dp"
         android:text="@string/mpa_title"
         android:textColor="@color/mpa_grey_black"
         android:textSize="@dimen/mpa_dimen_18sp"
@@ -46,11 +46,11 @@
         android:id="@+id/mpaCep"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/mpa_margin_16dp"
         android:layout_marginHorizontal="@dimen/mpa_margin_16dp"
+        android:layout_marginVertical="@dimen/mpa_margin_16dp"
         android:hint="@string/mpa_cep"
         android:inputType="number"
-        android:maxLength="10"
+        android:maxLength="9"
         android:minHeight="48dp"
         android:textColor="@color/mpa_black" />
 
@@ -59,8 +59,8 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/mpa_margin_18dp"
         android:layout_marginBottom="@dimen/mpa_margin_18dp"
-        android:textAlignment="center"
-        android:text="@string/mpa_cep_info" />
+        android:text="@string/mpa_cep_info"
+        android:textAlignment="center" />
 
     </LinearLayout>
   </androidx.cardview.widget.CardView>
@@ -72,8 +72,8 @@
     android:layout_marginHorizontal="@dimen/mpa_margin_16dp"
     android:background="@drawable/mpa_bg_button"
     android:text="@string/mpa_consult"
-    android:textColor="@color/mpa_white"
-    android:textAllCaps="false" />
+    android:textAllCaps="false"
+    android:textColor="@color/mpa_white" />
 
   <TextView
     android:id="@+id/mpaTitleResult"
@@ -85,7 +85,7 @@
     android:textColor="@color/mpa_grey_black"
     android:textSize="@dimen/mpa_dimen_18sp"
     android:textStyle="bold"
-    android:visibility="gone"/>
+    android:visibility="gone" />
 
   <TextView
     android:id="@+id/mpaDescriptionResult"
@@ -95,6 +95,6 @@
     android:layout_marginTop="@dimen/mpa_margin_16dp"
     android:textColor="@color/mpa_grey_black"
     android:textSize="@dimen/mpa_dimen_18sp"
-    android:visibility="gone"/>
+    android:visibility="gone" />
 
 </LinearLayout>
