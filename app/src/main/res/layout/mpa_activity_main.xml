@@ -50,7 +50,7 @@
         android:layout_marginHorizontal="@dimen/mpa_margin_16dp"
         android:hint="@string/mpa_cep"
         android:inputType="number"
-        android:maxLength="10"
+        android:maxLength="9"
         android:minHeight="48dp"
         android:textColor="@color/mpa_black" />
 
