@@ -7,7 +7,7 @@
     <item name="colorOnPrimary">@color/mpa_white</item>
     <!-- Secondary brand color. -->
     <item name="colorSecondary">@color/mpa_green</item>
-    <item name="colorSecondaryVariant">@color/mpa_green</item>
+    <item name="colorSecondaryVariant">#ff0000</item>
     <item name="colorOnSecondary">@color/mpa_black</item>
     <!-- Status bar color. -->
     <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>

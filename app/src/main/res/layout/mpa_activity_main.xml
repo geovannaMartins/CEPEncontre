@@ -17,7 +17,7 @@
   <androidx.appcompat.widget.Toolbar
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/mpa_green"
+    android:background="@color/mpa_purple_700"
     app:title="@string/mpa_title_findCEP"
     app:titleTextColor="@color/mpa_white" />
 
@@ -70,10 +70,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="@dimen/mpa_margin_16dp"
-    android:background="@drawable/mpa_bg_button"
+    android:background="@color/mpa_purple_500"
     android:text="@string/mpa_consult"
-    android:textColor="@color/mpa_white"
-    android:textAllCaps="false" />
+    android:textAllCaps="false"
+    android:textColor="@color/mpa_white" />
 
   <TextView
     android:id="@+id/mpaTitleResult"
