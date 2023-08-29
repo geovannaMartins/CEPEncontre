@@ -84,7 +84,6 @@ class CepActivity : AppCompatActivity() {
   private fun getConfigCepAndCall() {
     val cep = etCep.text.toString().replace(".", "").replace("-", "")
     if (cep.isNotEmpty() && cep.length == 8) {
-      loading.visibility = View.VISIBLE
       hideKeyboard()
     }
   }
